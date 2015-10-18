@@ -1,0 +1,17 @@
+.button {
+    -fx-pref-width: 75;
+}
+
+#minibox {
+	-fx-padding: 2px;
+}
+
+#tabpane-mycase {
+    -fx-pref-height: 200px;
+    -fx-Max-height: 250px;
+    -fx-tab-min-width: 120px;
+}
+
+#tabpane-input {
+    -fx-tab-min-width: 70px;
+}
