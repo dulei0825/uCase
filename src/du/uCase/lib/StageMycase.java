@@ -225,7 +225,7 @@ class StageMycase extends Stage {
                 this.tableViewMycase,
                 this.tabPane);
         this.root.setVgrow(this.tableViewMycase, Priority.ALWAYS);
-        this.scene = new Scene(this.root, 1280, 800);
+        this.scene = new Scene(this.root, 1024, 640);
         this.scene.getStylesheets().add(getClass().getResource("res/uCaseStyle.css").toExternalForm());
         this.setScene(this.scene);
 

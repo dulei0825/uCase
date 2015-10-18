@@ -32,13 +32,13 @@ import javafx.stage.Stage;
  * @author Du
  */
 public class StageInput extends Stage {
-    private UCore core;
+    private du.uCase.UCore core;
     //define component
     private Scene scene;
     private HBox root;
     private TabPane tabPane;
     private TableView tableViewCaseInfoTableView;
-    //tab action start
+    //region tab action declaration
     private Tab tabAction;
     private GridPane gridPaneAction;
     private Button buttonSaveAction; //save button
@@ -56,9 +56,10 @@ public class StageInput extends Stage {
     private ColumnConstraints columnConstraints10; //for button column
     private ColumnConstraints columnConstraints15; //for label column
     private ColumnConstraints columnConstraints30; //for content column
-    private ColumnConstraints columnConstraints35; //for content column
-    //tab action over
-    //tab part start
+    private ColumnConstraints columnConstraints25; //for content column
+    private ColumnConstraints columnConstraints20;
+    //endregion tab action declaration
+    //region tab part declaration
     private Tab tabPart;
     private GridPane gridPanePart;
     private Button buttonSavePart;
@@ -70,13 +71,31 @@ public class StageInput extends Stage {
     private TextField textFieldRmPnPart;
     private TextField textFieldRmSnPart;
     private ChoiceBox choiceBoxReturnedPart;
-    //tab part over
+    //endregion tab part declaration
     //tab mycase start
     private Tab tabMycase;
     private GridPane gridPaneMycase;
     private Button buttonSaveMycase;
+    private ChoiceBox choiceBoxStatusMycase;
+    private TextField textFieldOpenedMycase;
+    //private CheckBox checkBoxSrmsMycase;
+    private CheckBox checkBoxWnpMycase;
+    private CheckBox checkBoxCsatMycase;
+    private Button buttonCloseCaseMycase;
+    private TextField textFieldUissrMycase;
+    private TextField textFieldEmctaskMycase;
+    private TextField textFieldEmcsrMycase;
+    private TextField textFieldPriMycase;
+    private TextField textFieldHeadlineMycase;
+    private TextField textFieldCompanyMycase;
+    private TextField textFieldCityMycase;
+    private TextField textFieldAddressMycase;
+    private TextField textFieldPartyMycase;
+    private TextField textFieldIaMycase;
+    private TextField textFieldSnMycase;
+    private TextField textFieldStyleMycase;
     //tab mycase over
-    //tab srms start
+    //region tab srms declaration
     private Tab tabSrms;
     private GridPane gridPaneSrms;
     private Button buttonSaveSrms;
@@ -89,8 +108,8 @@ public class StageInput extends Stage {
     private TextField textFieldco11Srms;
     private TextField textFieldco26Srms;
     private TextField textFieldco29Srms;
+    //endregion tab srms declaration
 
-    //tab srms over
     public StageInput() {
         super();
         this.initGUI();
@@ -106,21 +125,122 @@ public class StageInput extends Stage {
         this.tabAction.setText("Action");
         this.tabPart.setText("Part");
         this.tabSrms.setText("SRMS");
-
-        //tab action start
-        this.gridPaneAction = new GridPane();
-        this.gridPaneAction.setPadding(new Insets(10, 10, 10, 10));
         this.rowConstraints = new RowConstraints(30);
         //this.rowConstraints.setPrefHeight(30);
         this.columnConstraints10 = new ColumnConstraints();
         this.columnConstraints15 = new ColumnConstraints();
         this.columnConstraints30 = new ColumnConstraints();
-        this.columnConstraints35 = new ColumnConstraints();
+        this.columnConstraints25 = new ColumnConstraints();
+        this.columnConstraints20 = new ColumnConstraints();
         this.columnConstraints10.setPercentWidth(10);
         this.columnConstraints15.setPercentWidth(15);
         this.columnConstraints30.setPercentWidth(30);
-        this.columnConstraints35.setPercentWidth(35);
+        this.columnConstraints25.setPercentWidth(25);
+        this.columnConstraints20.setPercentWidth(20);
+        //region tab mycase
+        this.gridPaneMycase = new GridPane();
+        this.gridPaneMycase.setPadding(new Insets(10, 10, 10, 10));
+        this.gridPaneMycase.getColumnConstraints().add(this.columnConstraints15);
+        this.gridPaneMycase.getColumnConstraints().add(this.columnConstraints25);
+        this.gridPaneMycase.getColumnConstraints().add(this.columnConstraints25);
+        this.gridPaneMycase.getColumnConstraints().add(this.columnConstraints25);
+        this.gridPaneMycase.getColumnConstraints().add(this.columnConstraints10);
+        this.gridPaneMycase.getRowConstraints().add(this.rowConstraints);
+        this.gridPaneMycase.getRowConstraints().add(this.rowConstraints);
+        this.gridPaneMycase.getRowConstraints().add(this.rowConstraints);
+        this.gridPaneMycase.getRowConstraints().add(this.rowConstraints);
+        this.gridPaneMycase.getRowConstraints().add(this.rowConstraints);
+        this.gridPaneMycase.getRowConstraints().add(this.rowConstraints);
+        this.gridPaneMycase.getRowConstraints().add(this.rowConstraints);
+        this.gridPaneMycase.getRowConstraints().add(this.rowConstraints);
+        this.gridPaneMycase.getRowConstraints().add(this.rowConstraints);
+        this.gridPaneMycase.getRowConstraints().add(this.rowConstraints);
+        Label lbl0Mycase = new Label("Case Status");
+        GridPane.setConstraints(lbl0Mycase, 0, 0);
+        Label lbl1Mycase = new Label("@Case");
+        GridPane.setConstraints(lbl1Mycase, 0, 2);
+        Label lbl2Mycase = new Label("EMC SR");
+        GridPane.setConstraints(lbl2Mycase, 4, 2);
+        Label lbl3Mycase = new Label("@Customer");
+        GridPane.setConstraints(lbl3Mycase, 0, 4);
+        Label lbl4Mycase = new Label("PARTY");
+        GridPane.setConstraints(lbl4Mycase, 4, 6);
+        Label lbl5Mycase = new Label("@Device");
+        GridPane.setConstraints(lbl5Mycase, 0, 7);
 
+        this.choiceBoxStatusMycase = new ChoiceBox();
+        this.choiceBoxStatusMycase.getItems().addAll("OPEN", "CLOSED");
+        GridPane.setConstraints(this.choiceBoxStatusMycase, 1, 0);
+        this.textFieldOpenedMycase = new TextField();
+        GridPane.setConstraints(this.textFieldOpenedMycase, 2, 0, 2, 1);
+        //this.checkBoxSrmsMycase = new CheckBox();
+        //GridPane.setConstraints(this.checkBoxSrmsMycase, 1, 1);
+        this.checkBoxWnpMycase = new CheckBox("WNP Done");
+        GridPane.setConstraints(this.checkBoxWnpMycase, 1, 1);
+        this.checkBoxCsatMycase = new CheckBox("CSAT Done");
+        GridPane.setConstraints(this.checkBoxCsatMycase, 2, 1);
+        this.buttonCloseCaseMycase = new Button("Close Case");
+        this.buttonCloseCaseMycase.setId("button-closecase");
+        GridPane.setConstraints(this.buttonCloseCaseMycase, 3, 1);
+        this.textFieldUissrMycase = new TextField();
+        GridPane.setConstraints(this.textFieldUissrMycase, 1, 2);
+        this.textFieldEmctaskMycase = new TextField();
+        GridPane.setConstraints(this.textFieldEmctaskMycase, 2, 2);
+        this.textFieldEmcsrMycase = new TextField();
+        GridPane.setConstraints(this.textFieldEmcsrMycase, 3, 2);
+        this.textFieldPriMycase = new TextField();
+        GridPane.setConstraints(this.textFieldPriMycase, 1, 3);
+        this.textFieldHeadlineMycase = new TextField();
+        GridPane.setConstraints(this.textFieldHeadlineMycase, 2, 3, 2, 1);
+        this.textFieldCompanyMycase = new TextField();
+        GridPane.setConstraints(this.textFieldCompanyMycase, 1, 4, 3, 1);
+        this.textFieldAddressMycase = new TextField();
+        GridPane.setConstraints(this.textFieldAddressMycase, 1, 5, 3, 1);
+        this.textFieldCityMycase = new TextField();
+        GridPane.setConstraints(this.textFieldCityMycase, 1, 6);
+        this.textFieldPartyMycase = new TextField();
+        GridPane.setConstraints(this.textFieldPartyMycase, 3, 6);
+        this.textFieldIaMycase = new TextField();
+        GridPane.setConstraints(this.textFieldIaMycase, 2, 6);
+        this.textFieldSnMycase = new TextField();
+        GridPane.setConstraints(this.textFieldSnMycase, 1, 7, 2, 1);
+        this.textFieldStyleMycase = new TextField();
+        GridPane.setConstraints(this.textFieldStyleMycase, 3, 7);
+        this.buttonSaveMycase = new Button("Save");
+        GridPane.setConstraints(this.buttonSaveMycase, 4, 9);
+        this.gridPaneMycase.getChildren().addAll(lbl0Mycase,
+                lbl1Mycase,
+                lbl2Mycase,
+                lbl3Mycase,
+                lbl4Mycase,
+                lbl5Mycase,
+                this.choiceBoxStatusMycase,
+                this.textFieldOpenedMycase,
+                //this.checkBoxSrmsMycase,
+                this.checkBoxWnpMycase,
+                this.checkBoxCsatMycase,
+                this.buttonCloseCaseMycase,
+                this.textFieldUissrMycase,
+                this.textFieldEmctaskMycase,
+                this.textFieldEmcsrMycase,
+                this.textFieldPriMycase,
+                this.textFieldHeadlineMycase,
+                this.textFieldCompanyMycase,
+                this.textFieldCityMycase,
+                this.textFieldAddressMycase,
+                this.textFieldPartyMycase,
+                this.textFieldIaMycase,
+                this.textFieldSnMycase,
+                this.textFieldStyleMycase,
+                this.buttonSaveMycase);
+        this.gridPaneMycase.setVgap(5.0);
+        this.gridPaneMycase.setHgap(10.0);
+        this.tabMycase.setContent(this.gridPaneMycase);
+
+        //region tab mycase
+        //region tab action
+        this.gridPaneAction = new GridPane();
+        this.gridPaneAction.setPadding(new Insets(10, 10, 10, 10));
         this.gridPaneAction.getColumnConstraints().add(this.columnConstraints15); //col 0
         this.gridPaneAction.getColumnConstraints().add(this.columnConstraints30); //col 1
         this.gridPaneAction.getColumnConstraints().add(this.columnConstraints30); //col 2
@@ -211,8 +331,8 @@ public class StageInput extends Stage {
         this.gridPaneAction.setVgap(5.0);
         this.gridPaneAction.setHgap(10.0);
         this.tabAction.setContent(this.gridPaneAction);
-        //tab action over
-        //tab part start
+        //endregion tab action
+        //region tab part
         this.gridPanePart = new GridPane();
         this.gridPanePart.setPadding(new Insets(10, 10, 10, 10));
         this.gridPanePart.getColumnConstraints().add(this.columnConstraints15);
@@ -287,9 +407,8 @@ public class StageInput extends Stage {
         this.gridPanePart.setVgap(5.0);
         this.gridPanePart.setHgap(10.0);
         this.tabPart.setContent(this.gridPanePart);
-        //tab part over
-        //tab srms start
-
+        //endregion tab part
+        //region tab srms
 
 
         this.gridPaneSrms = new GridPane();
@@ -369,7 +488,7 @@ public class StageInput extends Stage {
         this.gridPaneSrms.setVgap(5.0);
         this.gridPaneSrms.setHgap(10.0);
         this.tabSrms.setContent(this.gridPaneSrms);
-        //tab srms over
+        //endregion tab srms
         this.tabPane = new TabPane();
         this.tabPane.setId("tabpane-input");
         this.tabPane.getTabs().addAll(this.tabMycase,
@@ -456,7 +575,7 @@ public class StageInput extends Stage {
         });
 
         //
-        this.scene = new Scene(this.root, 600, 400);
+        this.scene = new Scene(this.root, 640, 400);
         this.scene.getStylesheets().add(getClass().getResource("res/uCaseStyle.css").toExternalForm());
         this.setScene(this.scene);
         this.initModality(Modality.APPLICATION_MODAL);
@@ -464,7 +583,7 @@ public class StageInput extends Stage {
     }
 
     private void initCore() {
-        core = new UCore();
+        core = new du.uCase.UCore();
     }
 
     public void setFocusTabMycase() {

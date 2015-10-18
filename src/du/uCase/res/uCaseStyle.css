@@ -1,5 +1,9 @@
 .button {
-    -fx-pref-width: 75;
+    -fx-pref-width: 75px;
+}
+
+#button-closecase {
+    -fx-pref-width: 100px;
 }
 
 #minibox {

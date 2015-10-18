@@ -25,20 +25,18 @@ import javafx.util.StringConverter;
 
 class UCore {
 
-    private static UConfig config;
+    private static du.uCase.UConfig uconfig = new du.uCase.UConfig();
 
     public UCore() {
-        this.setConfig();
+        //this.setConfig();
     }
 
-    private void setConfig() {
-        config = new UConfig();
-    }
+    //private void setConfig() {uconfig = new UConfig();}
 
     private Connection getMYConnection() {
         Connection connection = null;
         String dbpath;
-        if (config.getDebugmode().equals("1")) {
+        if (uconfig.getDebugmode().equals("1")) {
             dbpath = "jdbc:sqlite:src/du/uCase/db/debug.mydb.sqlite3";
             //dbpath = "jdbc:sqlite:src/du/uCase/db/debug.mydb.sqlite3";
         } else {
@@ -57,7 +55,7 @@ class UCore {
     private Connection getCSConnection() {
         Connection connection = null;
         String dbpath;
-        if (config.getDebugmode().equals("1")) {
+        if (uconfig.getDebugmode().equals("1")) {
             dbpath = "jdbc:sqlite:src/du/uCase/db/debug.csdb.sqlite3";
         } else {
             dbpath = "jdbc:sqlite:src/du/uCase/db/csdb.sqlite3";
@@ -126,7 +124,7 @@ class UCore {
     }
 
     private TableColumn<Map, String>[] getColumns(String tablename) {
-        String[] FIELDS = this.config.getFields(tablename);
+        String[] FIELDS = this.uconfig.getFields(tablename);
 
         TableColumn<Map, String>[] columns = new TableColumn[FIELDS.length];
 
@@ -180,7 +178,7 @@ class UCore {
     }
 
     private ObservableList<Map> getRows(String tablename, String filter) {
-        String[] FIELDS = this.config.getFields(tablename);
+        String[] FIELDS = this.uconfig.getFields(tablename);
         Connection connection;
         if (tablename.equals("FULLCASE")) {
             connection = this.getCSConnection();
@@ -410,7 +408,7 @@ class UCore {
     }
 
     public boolean setRowsAction(Map<String, String>[] rows) {
-        String[] FIELDS = this.config.getFullFields("ACTION");
+        String[] FIELDS = this.uconfig.getFullFields("ACTION");
         String sqlfields = "";
         String sqlvalues = "";
         String sql = "";
